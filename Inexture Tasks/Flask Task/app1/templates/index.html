@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <img src="https://raw.githubusercontent.com/MariyaSha/SimpleGreetingApp/main/logo.png">
+    <br>
+
+    <form action="greet" method="GET"> 
+    <!-- <form action='/greet' method="GET">-->
+        
+
+        {% for i in get_flashed_messages()%}
+            <p>{{i}}</p>
+        {% endfor %}
+ 
+        <br>
+        <input type="text" name="name_input">
+        <br>
+        <input type="submit" value="Greet!" id="greet">
+    
+    </form>
+</body>
+</html>
