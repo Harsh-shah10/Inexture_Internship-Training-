@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} Login page {% endblock title %}
+
+{% block content %}
+
+
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            {% with messages = get_flashed_messages() %}
+            <br>
+            {% if messages %}
+            {% for message in messages %}
+            {{ message }}
+            <br>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
+            <form action="/log_in" method="POST">
+                {{ form.hidden_tag() }}
+
+
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+
+
+                <br>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <p>
+
+                    {{ form.submit }}
+                </p>
+
+
+            </form>
+
+
+            <div class="form-group mt-2">
+                <a href="{{ url_for('user.dashboard') }}">Forgot password ?</a>
+            </div>
+
+
+
+
+            {% if message!=None %}
+            <h3>{{message}}</h3>
+            {% endif %}
+
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
