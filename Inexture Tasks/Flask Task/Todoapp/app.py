@@ -5,9 +5,9 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 
 # Add Database 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password@localhost:5432/todoapp"
+app.config['SQLALCHEMY_DATABASE_URI'] = 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True 
-app.config['SECRET_KEY'] = 'the random string'    
+app.config['SECRET_KEY'] = 
 
 # initialize the database 
 db = SQLAlchemy(app)
