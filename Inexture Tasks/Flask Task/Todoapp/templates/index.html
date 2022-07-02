@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+
+</head>
+<body>
+    <h2>Todo App</h2>
+    
+    <div> Add new task 
+        <form action="{{url_for('add')}}" method="POST">
+            <input type="text" name="todoitem" placeholder="Eat Pizza">
+            <input type="submit" value="Add Task">
+        </form>
+    </div>
+    
+    <div class="flashes">
+        {% for message in get_flashed_messages() %}
+          <p style="color:red;">{{ message }}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        {% if incomplete_status %}
+        <h3 style="background-color:powderblue;"> All Tasks </h3>
+        {% else %}
+        <h3 style="background-color:powderblue;"> Completed-Tasks </h3>
+        {% endif %}
+        <ul>
+            {% for task in all_tasks %}
+            <li><h4>{{task.text}}</h4></li>
+            
+                <a href="delete/{{task.id}}">Delete</a> <br>
+                {% if not task.complete %}
+                <a href="update/{{task.id}}">Update</a> <br>
+                <a href="mark_complete/{{task.id}}">Mark-as-Complete</a>
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+
+        <br>
+        {% if incomplete_status %}
+        <form method="GET" action="{{url_for('completed_tasks')}}">
+            <button type="submit" value="view_completed_tasks">Completed-Tasks</button>
+        </form>
+        {% endif %}
+
+        {% if not incomplete_status %}
+        <form method="GET" action="{{url_for('index')}}">
+            <button  class="button" type="submit" value="Homepage">Home-page</button>
+        </form>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
