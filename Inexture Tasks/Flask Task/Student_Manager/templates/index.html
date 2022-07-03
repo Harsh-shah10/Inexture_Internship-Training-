@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+{% for student in students %}
+    <p>
+    Full Name :         
+    <a href="{{ url_for('student', student_id=student.id)}}">
+        {{ student.firstname }} {{ student.lastname }}
+    </a>
+    
+    <br>
+    Email : {{ student.email }}
+    </p>
+
+    <a  style="color:rgb(2, 153, 199);" href="{{ url_for('edit', student_id=student.id)}}">Edit Details</a>
+    &nbsp;
+    <a  style="color:rgb(7, 255, 61);" href="{{ url_for('delete', student_id=student.id)}}">Delete Record</a>
+
+    <hr>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3 style="color:rgb(231, 13, 122);">Add new Student</h3>
+    <form method="post">
+        <p>
+            <label>First name</label>
+            <input type="text" name="fname" placeholder="Enter first name">  
+        </p>
+        <p>
+            <label>Last name</label>
+            <input type="text" name="lname" placeholder="Enter last name">  
+        </p>
+        <p>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter Email ID">  
+        </p>
+        <p>
+            <label>Age</label>
+            <input type="number" name="age" placeholder="Enter Age">  
+        </p>
+        <p>
+            <label>Bio</label><br>
+          
+            <textarea name="bio" rows="7" cols="30" placeholder="Enter Bio">
+            </textarea>
+        </p>
+        <p>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+
+
+{% endblock %}

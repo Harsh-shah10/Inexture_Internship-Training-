@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h3 style="color:rgb(231, 13, 122);">Edit Student Record</h3>
+    <form method="post">
+        <p>
+            <label>First name</label>
+            <input type="text" name="fname" value={{ student.firstname }}>  
+        </p>
+        <p>
+            <label>Last name</label>
+            <input type="text" name="lname" value={{ student.lastname }}>  
+        </p>
+        <p>
+            <label>Email</label>
+            <input type="email" name="email" value={{ student.email }}>  
+        </p>
+        <p>
+            <label>Age</label>
+            <input type="number" name="age" value={{ student.age }}>  
+        </p>
+        <p>
+            <label>Bio</label><br>
+          
+            <textarea name="bio" rows="7" cols="30">
+                {{ student.bio }}
+            </textarea>
+        </p>
+        <p>
+            <button type="submit">Update</button>
+        </p>
+    </form>
+
+
+{% endblock %}

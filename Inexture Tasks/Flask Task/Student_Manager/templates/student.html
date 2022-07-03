@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+
+{% for student in students %}
+    Full Name : {{ student.firstname }} {{ student.lastname }}
+    <br>
+    Email : {{ student.email }}
+    <br>
+    Age : {{ student.age }} years old.
+    <br>
+    Course : {{ student.bio }}
+    <br>
+    Joined: {{ student.created_at }}
+    <br>
+    </p>
+    <hr>
+{% endfor %}
+
+{% endblock %}
